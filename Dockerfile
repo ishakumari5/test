@@ -14,7 +14,8 @@ ENV \
 RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
  && apt-get upgrade -y \
- && apt-get install -y
+ && apt-get install -y \
+ && apt-get install rsync
 # Install build dependencies (source: https://wiki.cyanogenmod.org/w/Build_for_bullhead)
 # rm -f /var/lib/apt/lists/*
 
