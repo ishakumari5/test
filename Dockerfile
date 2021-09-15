@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM ubuntu:20.04
 MAINTAINER Aryan Karan <aryankaran28022004@gmail.com>
 
 RUN export DEBIAN_FRONTEND=noninteractive \
