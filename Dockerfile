@@ -31,7 +31,7 @@ RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin
  && chmod a+x /usr/local/bin/repo
 
 # Add sudo permission
-RUN echo "aryan ALL=NOPASSWD: ALL" > /etc/sudoers.d/build
+RUN echo "aryan ALL=NOPASSWD: ALL" > /etc/sudoers.d/aryan
 
 # Fix ownership
 RUN chown -R aryan:aryan /home/aryan
