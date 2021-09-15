@@ -7,3 +7,6 @@ RUN apt-get update \
 
 # Set time zone
 RUN export DEBIAN_FRONTEND=noninteractive && apt install tzdata -y && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && date
+
+# Increase current space
+mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan && chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/*
