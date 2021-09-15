@@ -15,7 +15,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get update \
  && apt-get upgrade -y \
  && apt-get install -y \
- && apt-get install rsync curl -y
+ && apt-get install rsync curl sudo -y
 # Install build dependencies (source: https://wiki.cyanogenmod.org/w/Build_for_bullhead)
 # rm -f /var/lib/apt/lists/*
 
@@ -31,7 +31,7 @@ RUN curl https://storage.googleapis.com/git-repo-downloads/repo > /usr/local/bin
  && chmod a+x /usr/local/bin/repo
 
 # Add sudo permission
-RUN echo "aryan ALL=NOPASSWD: ALL" > /etc/sudoers.d/aryan
+# RUN echo "aryan ALL=NOPASSWD: ALL" > /etc/sudoers.d/aryan
 
 # Fix ownership
 RUN chown -R aryan:aryan /home/aryan
