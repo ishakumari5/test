@@ -7,4 +7,4 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && adduser --gecos "" --disabled-password aryan && echo 'aryan:aryan' | chpasswd && usermod -aG sudo aryan
 
 # Env Setup
-RUN bash envsetup.sh
+RUN ls -lh && pwd
