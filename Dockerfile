@@ -1,10 +1,9 @@
 FROM ubuntu:20.04
 MAINTAINER Aryan Karan <aryankaran28022004@gmail.com>
 
-RUN export DEBIAN_FRONTEND=noninteractive \
- && apt-get update \
+RUN apt-get update \
  && apt-get install sudo -y \
  && adduser --gecos "" --disabled-password aryan && echo 'aryan:aryan' | chpasswd && usermod -aG sudo aryan
 
 # Env Setup
-RUN ls -lh && pwd
+RUN ls -lh home && find home && pwd
