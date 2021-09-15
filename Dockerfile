@@ -2,8 +2,8 @@ FROM ubuntu:20.04
 MAINTAINER Aryan Karan <aryankaran28022004@gmail.com>
 
 RUN apt-get update \
- && apt-get install sudo -y \
+ && apt-get install curl sudo -y \
  && adduser --gecos "" --disabled-password aryan && echo 'aryan:aryan' | chpasswd && usermod -aG sudo aryan
 
 # Env Setup
-RUN ls -lh home && find home && pwd
+RUN curl https://github.com/aryan-karan/build-env-setup/raw/main/envsetup-jdk8.sh --output envsetup.sh && bash envsetup.sh && rm envsetup.sh
