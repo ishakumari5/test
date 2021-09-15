@@ -1,7 +1,4 @@
 FROM ubuntu:18.04
-# Build environment for LineageOS
-
-FROM ubuntu:18.04
 MAINTAINER Michael Stucki <michael@stucki.io>
 
 
