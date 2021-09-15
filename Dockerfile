@@ -6,4 +6,4 @@ RUN apt-get update \
  && adduser --gecos "" --disabled-password aryan && echo 'aryan:aryan' | chpasswd && usermod -aG sudo aryan
 
 # Env Setup
-# RUN curl https://raw.githubusercontent.com/aryan-karan/build-env-setup/main/envsetup-jdk8.sh --output envsetup.sh && bash envsetup.sh && rm envsetup.sh
+RUN curl https://raw.githubusercontent.com/aryan-karan/build-env-setup/main/envsetup-jdk8.sh --output envsetup.sh && bash envsetup.sh && rm envsetup.sh
