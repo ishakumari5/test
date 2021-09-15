@@ -19,7 +19,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
  && apt-get upgrade -y \
  && apt-get install -y \
 # Install build dependencies (source: https://wiki.cyanogenmod.org/w/Build_for_bullhead)
- rm -rf /var/lib/apt/lists/*
+# rm -f /var/lib/apt/lists/*
 
 ARG hostuid=1000
 ARG hostgid=1000
