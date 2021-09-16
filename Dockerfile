@@ -9,4 +9,5 @@ RUN apt-get update \
 RUN export DEBIAN_FRONTEND=noninteractive && apt install tzdata -y && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && date
 
 # Increase current space
-mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan && chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/*
+# mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan && chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/*
+run ls -lh && if [ -d worksoace ]; then ls -lhA workspace; fi && df -h
