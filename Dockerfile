@@ -9,4 +9,4 @@ RUN apt-get update \
 RUN export DEBIAN_FRONTEND=noninteractive && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime || echo "Please Install tzdata first" && date
 
 # Increase current space
-RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo '[ ! -d /workspace/aryan ] && mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan; chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/* && export DEBIAN_FRONTEND=noninteractive && apt install tzdata -y' > /root/.bashrc
+RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo '[ ! -d /workspace/aryan ] && mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan; chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/* && export TERM=linux && export DEBIAN_FRONTEND=noninteractive && apt install tzdata -y' > /root/.bashrc
