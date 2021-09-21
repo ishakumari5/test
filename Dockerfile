@@ -6,7 +6,7 @@ RUN apt-get update \
  && adduser --gecos "" --disabled-password aryan && echo 'aryan:aryan' | chpasswd && usermod -aG sudo aryan
 
 # Set time zone
-RUN export DEBIAN_FRONTEND=noninteractive && apt install tzdata -y && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime && date
+RUN export DEBIAN_FRONTEND=noninteractive && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime || echo "Please Install tzdata first" && date
 
 # Increase current space
-RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo 'if [ ! -d /workspace/aryan ]; then mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan; fi && chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/*' > /root/.bashrc
+RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo '[ ! -d /workspace/aryan ] && mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan; chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/* && export DEBIAN_FRONTEND=noninteractive && apt install tzdata -y' > /root/.bashrc
