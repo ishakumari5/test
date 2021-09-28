@@ -14,7 +14,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && curl https://raw.githubusercontent.
 RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo '[ ! -d /workspace/aryan ] && mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan && chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/*' > /root/.bashrc
 
 RUN cd /home/aryan && mkdir havoc && cd havoc \
-&& echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa && cat ~/.ssh/id_rsa.pub && sleep 1m \
+&& echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa && cat ~/.ssh/id_rsa.pub \
 && ssh -T git@github.com || echo Git Verification done \
 && git config --global user.name "Aryan Karan" \
 && git config --global user.email "aryankaran28022004@gmail.com" \
