@@ -13,7 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive && curl https://raw.githubusercontent.
 # Increase current space
 RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo '[ ! -d /workspace/aryan ] && mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan && chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/*' > /root/.bashrc
 
-# Add Keys
+# Add Github Keys
 RUN apt-get install gnupg -y \
 && echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa \
 && echo aryan1111 > a \
@@ -23,8 +23,6 @@ RUN apt-get install gnupg -y \
 && ssh -T git@github.com  -o 'StrictHostKeyChecking no' || echo Git Verification done
 
 RUN cd /home/aryan && mkdir havoc && cd havoc \
-# && echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa && cat ~/.ssh/id_rsa.pub \
-&& ssh -T git@github.com || echo Git Verification done \
 && git config --global user.name "Aryan Karan" \
 && git config --global user.email "aryankaran28022004@gmail.com" \
 && git config --global color.ui true \
