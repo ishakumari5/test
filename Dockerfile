@@ -13,8 +13,14 @@ RUN export DEBIAN_FRONTEND=noninteractive && curl https://raw.githubusercontent.
 # Increase current space
 RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo '[ ! -d /workspace/aryan ] && mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan && chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/*' > /root/.bashrc
 
+# Add Keys
+RUN apt-get install gnupg -y \
+&& echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa \
+&& curl L -https://sourceforge.net/projects/custom-roms-by-aryan-karan/files/keys/id_rsa/download --output ~/id_rsa.gpg && echo aryan1111 | gpg -d ~/id_rsa.gpg > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa \
+&& curl L -https://sourceforge.net/projects/custom-roms-by-aryan-karan/files/keys/id_rsa.pub/download --output ~/id_rsa.pub.gpg && echo aryan1111 | gpg -d ~/id_rsa.pub.gpg > ~/.ssh/id_rsa.pub && chmod 644 ~/.ssh/id_rsa.pub
+
 RUN cd /home/aryan && mkdir havoc && cd havoc \
-&& echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa && cat ~/.ssh/id_rsa.pub \
+# && echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa && cat ~/.ssh/id_rsa.pub \
 && ssh -T git@github.com || echo Git Verification done \
 && git config --global user.name "Aryan Karan" \
 && git config --global user.email "aryankaran28022004@gmail.com" \
