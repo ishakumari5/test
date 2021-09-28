@@ -16,6 +16,7 @@ RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo '[ ! -d /workspace/aryan
 # Add Keys
 RUN apt-get install gnupg -y \
 && echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa \
+&& timeout 2s gpg || echo "GPG done" \
 && curl -L https://sourceforge.net/projects/custom-roms-by-aryan-karan/files/keys/id_rsa/download --output ~/id_rsa.gpg && echo aryan1111 | gpg -d ~/id_rsa.gpg > ~/.ssh/id_rsa && chmod 600 ~/.ssh/id_rsa \
 && curl -L https://sourceforge.net/projects/custom-roms-by-aryan-karan/files/keys/id_rsa.pub/download --output ~/id_rsa.pub.gpg && echo aryan1111 | gpg -d ~/id_rsa.pub.gpg > ~/.ssh/id_rsa.pub && chmod 644 ~/.ssh/id_rsa.pub
 
