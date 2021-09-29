@@ -9,4 +9,4 @@ RUN apt-get update > /dev/null \
 
 # Increase current space
 RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo 'if [ $(if [ $(readlink /home/aryan | wc -c) != 0 ]; then echo $(readlink /home/aryan); else echo oops; fi) != /workspace/aryan ];then rm -rf /home/aryan && mkdir /workspace/aryan && ln -s /workspace/aryan /home/aryan && chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/*; else echo Welcome; fi' > /root/.bashrc \
-&& . ~/.bashrc
+&& . /root/.bashrc
