@@ -8,5 +8,5 @@ RUN apt-get update > /dev/null \
  && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime || echo "Please Install tzdata first" && date
 
 # Increase current space
-RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo 'if [ $(if [ $(readlink /home/aryan | wc -c) != 0 ]; then echo $(readlink /home/aryan); else echo oops; fi) != /workspace/aryan ];then rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan; else echo Welcome; fi && if [ ! -d /workspace/aryan ]; then mkdir /workspace/aryan || echo; fi && chown -R aryan:aryan /workspace || echo Oops mkdir first && chmod 717 /workspace/* || echo mkdir first' > ~/.bashrc \
+RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo 'if [ $(if [ $(readlink /home/aryan | wc -c) != 0 ]; then echo $(readlink /home/aryan); else echo oops; fi) != /workspace/aryan ];then rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan; else echo Welcome; fi && if [ ! -d /workspace/aryan ]; then mkdir -p /workspace/aryan || echo; fi && chown -R aryan:aryan /workspace || echo Oops && chmod 717 /workspace/* || echo Oops' > ~/.bashrc \
 && . ~/.bashrc
