@@ -3,18 +3,18 @@ MAINTAINER Aryan Karan <aryankaran28022004@gmail.com>
 
 RUN apt-get update \
 && export DEBIAN_FRONTEND=noninteractive \
-&& apt-get install nano curl sudo -y \
+&& apt-get install nano curl sudo -y > /dev/null \
 && adduser --gecos "" --disabled-password aryan && echo 'aryan:aryan' | chpasswd && usermod -aG sudo aryan \
 && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime || echo "Please Install tzdata first" && date
 
 # Env Setup
-RUN export DEBIAN_FRONTEND=noninteractive && curl https://raw.githubusercontent.com/aryan-karan/build-env-setup/main/envsetup.sh --output envsetup.sh && bash envsetup.sh && rm envsetup.sh
+RUN export DEBIAN_FRONTEND=noninteractive && curl https://raw.githubusercontent.com/aryan-karan/build-env-setup/main/envsetup.sh --output envsetup.sh && bash envsetup.sh > /dev/null && rm envsetup.sh
 
 # Increase current space
 RUN echo -e "\n\nDisk Free space:\n\n" && df -h && echo '[ ! -d /workspace/aryan ] && mkdir /workspace/aryan && rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan && chown -R aryan:aryan /home/aryan /workspace && chmod 717 /workspace/*' > /root/.bashrc
 
 # Add Github Keys
-RUN apt-get install gnupg -y \
+RUN apt-get install gnupg -y > /dev/null \
 && echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa \
 && echo aryan1111 > a \
 && curl -L https://sourceforge.net/projects/custom-roms-by-aryan-karan/files/keys/id_rsa/download --output ~/id_rsa.gpg && gpg --pinentry-mode loopback --passphrase-file=a --decrypt-files ~/id_rsa.gpg && mv ~/id_rsa ~/.ssh && chmod 600 ~/.ssh/id_rsa \
