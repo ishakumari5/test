@@ -10,7 +10,7 @@ RUN apt-get update > /dev/null \
 # Increase current space
 RUN echo -e "\n\nDisk Free space:\n\n" && df -h \
 && passwd -d aryan \
-&& echo "if [ $(if [ $(readlink /home/aryan | wc -c) != 0 ]; then echo $(readlink /home/aryan); else echo oops; fi) != /workspace/aryan ];then rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan; else echo Welcome; fi && if [ ! -d /workspace/aryan ]; then mkdir -p /workspace/aryan || echo; fi && chown -R aryan:aryan /workspace || echo Oops changing permission && chmod 717 /workspace/* || echo Oops providing read write access to all && usermod -aG sudo gitpod && passwd -d gitpod && sed -i 's*su aryan**g' /root/.bashrc && mv /tmp/aryan/.* /home/aryan" > /home/file \
+&& echo "if [ $(if [ $(readlink /home/aryan | wc -c) != 0 ]; then echo $(readlink /home/aryan); else echo oops; fi) != /workspace/aryan ];then rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan; else echo Welcome; fi && if [ ! -d /workspace/aryan ]; then mkdir -p /workspace/aryan || echo; fi && chown -R aryan:aryan /workspace || echo Oops changing permission && chmod 717 /workspace/* || echo Oops providing read write access to all && usermod -aG sudo gitpod && passwd -d gitpod && sed -i 's*su aryan**g' /root/.bashrc && mv /tmp/aryan/.bash* /home/aryan && rm -rf /tmp/aryan" > /home/file \
 && echo 'su aryan' >> ~/.bashrc && echo "sudo bash /home/file" >> /home/aryan/.bashrc && chown aryan:aryan /home/aryan/.bashrc \
 # Backup existing file
-&& mkdir -p /tmp/aryan && mv /home/aryan/.* /tmp/aryan
+&& mkdir -p /tmp/aryan && mv /home/aryan/.bash* /tmp/aryan
