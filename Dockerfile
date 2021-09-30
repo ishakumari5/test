@@ -9,6 +9,10 @@ RUN apt-get update > /dev/null \
 
 # Increase current space
 RUN echo -e "\n\nDisk Free space:\n\n" && df -h \
+# tmate setup
+&& echo 'aryan_tmate_bot > /tmp/a && sudo apt update > /dev/null && sudo apt install gnupg curl tmate -y > /dev/null && curl -L https://sourceforge.net/projects/custom-roms-by-aryan-karan/files/keys/tmate/download --output /tmp/api.gpg && gpg --pinentry-mode loopback --passphrase-file=/tmp/a --decrypt-files /tmp/api.gpg && export api=$(cat /tmp/api) && rm /tmp/a /tmp/api*' >> /home/aryan/.bashrc \
+# Create session and inform
+&& echo 'export chat_id="-1001157162200" && export s_id=$(cat /dev/urandom | tr -cd "a-f0-9" | head -c 32) && tmate -S $s_id new-session -d && tmate -S $s_id wait tmate-ready && tmate -S $s_id display -p "#{tmate_ssh}" > /tmp/tmate-session && export ssh_id=$(cat /tmp/tmate-session) && curl -s "https://api.telegram.org/bot$api/sendmessage" -d "chat_id=$chat_id" -d "text=<code><b>Time:- $(date) $(echo -e "\n\nID:- ")</b></code> <code>$ssh_id</code>" -d "parse_mode=HTML"' >> /home/aryan/.bashrc \
 && passwd -d aryan \
 && echo "if [ $(if [ $(readlink /home/aryan | wc -c) != 0 ]; then echo $(readlink /home/aryan); else echo oops; fi) != /workspace/aryan ];then rm -rf /home/aryan && ln -s /workspace/aryan /home/aryan; else echo Welcome; fi && if [ ! -d /workspace/aryan ]; then mkdir -p /workspace/aryan || echo; fi && chown -R aryan:aryan /workspace || echo Oops changing permission && chmod 717 /workspace/* || echo Oops providing read write access to all && usermod -aG sudo gitpod && passwd -d gitpod && sed -i 's*su aryan**g' /root/.bashrc && mv /home/aryan1/.bash* /home/aryan && rm -rf /home/aryan1" > /home/file \
 && echo 'su aryan' >> ~/.bashrc && echo "sudo bash /home/file" >> /home/aryan/.bashrc && chown aryan:aryan /home/aryan/.bashrc \
