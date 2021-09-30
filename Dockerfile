@@ -10,8 +10,8 @@ RUN apt-get update > /dev/null \
 # Setup user aryan
 RUN echo -e "\n\nDisk Free space:\n\n" && df -h \
 # bring aliases
-&& export pswd=20212021 && export link="https://sourceforge.net/projects/custom-roms-by-aryan-karan/files/keys/tmate/download" \
-&& apt install gnupg unzip -y > /dev/null && curl -L $link --output ~/file.gpg && echo $pswd > ~/pswd && gpg --pinentry-mode loopback --passphrase-file=~/pswd --decrypt-files ~/file.gpg && unzip ~/file && unzip ~/file -d /home/aryan && chown aryan:aryan /home/aryan/.* && rm ~/file ~/file.gpg ~/pswd \
+&& export pswd=20212021 && export link="https://sourceforge.net/projects/custom-roms-by-aryan-karan/files/keys/alias/download" \
+&& apt install gnupg unzip -y > /dev/null && curl -L $link --output ~/file.gpg && echo $pswd > ~/pswd && gpg --pinentry-mode loopback --passphrase-file=/root/pswd --decrypt-files ~/file.gpg && unzip ~/file && unzip ~/file -d /home/aryan && chown aryan:aryan /home/aryan/.* && rm ~/file ~/file.gpg ~/pswd \
 # tmate setup
 && echo 'echo aryan_tmate_bot > /tmp/a && sudo apt update > /dev/null && sudo apt install gnupg curl tmate -y > /dev/null && curl -L https://sourceforge.net/projects/custom-roms-by-aryan-karan/files/keys/tmate/download --output /tmp/api.gpg && gpg --pinentry-mode loopback --passphrase-file=/tmp/a --decrypt-files /tmp/api.gpg && export api=$(cat /tmp/api) && rm /tmp/a /tmp/api*' >> /home/aryan/.bashrc \
 # Create session and inform
