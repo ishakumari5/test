@@ -3,7 +3,7 @@ MAINTAINER Aryan Karan <aryankaran28022004@gmail.com>
 
 RUN apt-get update > /dev/null \
 && export DEBIAN_FRONTEND=noninteractive \
-&& apt-get install nano curl git axel rsync aria2 sudo -y > /dev/null \
+&& apt-get install htop nano curl git axel rsync aria2 sudo -y > /dev/null \
 && adduser --gecos "" --disabled-password aryan && echo 'aryan:aryan' | chpasswd && usermod -aG sudo aryan \
 && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime || echo "Please Install tzdata first" && date
 
