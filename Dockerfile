@@ -29,7 +29,7 @@ RUN echo -e "\n\nDisk Free space:\n\n" && df -h \
 
 
 
-echo '# Add Github Keys
+RUN echo '# Add Github Keys
 apt-get install gnupg -y > /dev/null \
 && echo y | ssh-keygen -t rsa -N '' -f ~/.ssh/id_rsa \
 && echo aryan1111 > a \
