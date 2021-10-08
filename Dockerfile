@@ -8,7 +8,7 @@ RUN apt-get update \
 && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime || echo "Please Install tzdata first" && date
 
 # Env Setup
-RUN export DEBIAN_FRONTEND=noninteractive && curl https://raw.githubusercontent.com/aryan-karan/build-env-setup/main/envsetup.sh --output envsetup.sh && bash envsetup.sh > /dev/null && rm envsetup.sh
+RUN export DEBIAN_FRONTEND=noninteractive && curl https://raw.githubusercontent.com/aryankaran/build-env-setup/main/envsetup.sh --output envsetup.sh && bash envsetup.sh > /dev/null && rm envsetup.sh
 
 
 
