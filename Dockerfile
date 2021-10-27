@@ -3,12 +3,12 @@ MAINTAINER Aryan Karan <aryankaran28022004@gmail.com>
 
 RUN apt-get update \
 && export DEBIAN_FRONTEND=noninteractive \
-&& apt-get install nano curl htop sudo -y > /dev/null \
+&& apt-get install nano curl htop sudo -y 1>/dev/null 2>/dev/null \
 && adduser --gecos "" --disabled-password aryan && echo 'aryan:aryan' | chpasswd && usermod -aG sudo aryan \
 && ln -sf /usr/share/zoneinfo/Asia/Kolkata /etc/localtime || echo "Please Install tzdata first" && date
 
 # Env Setup
-RUN export DEBIAN_FRONTEND=noninteractive && curl https://raw.githubusercontent.com/aryankaran/build-env-setup/main/envsetup.sh --output envsetup.sh && bash envsetup.sh > /dev/null && rm envsetup.sh
+RUN bash -c "$(curl -L https://raw.githubusercontent.com/aryankaran/build-env-setup/main/envsetup.sh  2> /dev/null)" 1>/dev/null 2>/dev/null
 
 
 
